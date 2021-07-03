@@ -26,5 +26,6 @@ export default defineComponent({
 body {
   margin: 0;
   padding: 0;
+  min-width: 360px;
 }
 </style>
