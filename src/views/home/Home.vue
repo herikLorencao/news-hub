@@ -2,10 +2,14 @@
   <section>
     <h1>Principais Notícias</h1>
     <article-card
-      v-for="news in headlinesNews.articles"
-      :key="news.url"
-      :news="news"
+      v-show="headlinesNews.length !== 0"
+      v-for="article in headlinesNews.articles"
+      :key="article.url"
+      :article="article"
     />
+    <div v-show="headlinesNews.length === 0" class="loading-container">
+      <it-loading class="loading" color="blue"></it-loading>
+    </div>
   </section>
 </template>
 
@@ -32,6 +36,6 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "home";
 </style>

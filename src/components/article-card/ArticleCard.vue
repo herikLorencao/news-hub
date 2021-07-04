@@ -1,14 +1,14 @@
 <template>
   <div class="card">
     <section>
-      <h1>{{ news.title }}</h1>
-      <span>{{ news.description }}</span>
+      <h1>{{ article.title }}</h1>
+      <span>{{ article.description }}</span>
       <it-button class="read-button" type="primary" outlined
         >Continue lendo</it-button
       >
     </section>
     <figure>
-      <img :src="news.urlToImage" />
+      <img :src="article.urlToImage" />
     </figure>
   </div>
 </template>
@@ -19,11 +19,12 @@ import { Article } from "@/typings/news";
 
 export default defineComponent({
   props: {
-    news: {
+    article: {
       type: Article,
       required: true,
     },
   },
+  methods: {},
 });
 </script>
 
