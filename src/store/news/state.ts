@@ -4,10 +4,8 @@ type NewsState = {
     article: Article | null;
 };
 
-const article = null;
-
 const state: NewsState = {
-    article,
+    article: null,
 };
 
 export { state, NewsState };

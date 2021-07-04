@@ -18,17 +18,5 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-:root {
-  font-size: 10px;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  min-width: 360px;
-}
+@import "styles/root";
 </style>

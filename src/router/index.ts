@@ -7,6 +7,20 @@ const routes: Array<RouteRecordRaw> = [
         name: "Home",
         component: Home,
     },
+    {
+        path: "/sobre",
+        name: "Sobre",
+        component: () =>
+            import(/* webpackChunkName: "about" */ "../views/about/About.vue"),
+    },
+    {
+        path: "/noticia",
+        name: "Notícia",
+        component: () =>
+            import(
+                /* webpackChunkName: "article" */ "../views/article/Article.vue"
+            ),
+    },
 ];
 
 const router = createRouter({
@@ -15,5 +29,3 @@ const router = createRouter({
 });
 
 export default router;
-
-// component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')

@@ -1,5 +1,5 @@
 import { NewsList } from "@/typings/news";
-import axios, { AxiosInstance, AxiosResponse } from "axios";
+import axios, { AxiosInstance } from "axios";
 
 export default class NewsService {
     private client: AxiosInstance;

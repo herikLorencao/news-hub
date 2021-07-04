@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div @click="readArticle" class="card">
     <section>
       <h1>{{ article.title }}</h1>
       <span>{{ article.description }}</span>
@@ -13,18 +13,22 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from "vue";
-import { Article } from "@/typings/news";
 
 export default defineComponent({
   props: {
     article: {
-      type: Article,
+      type: Object,
       required: true,
     },
   },
-  methods: {},
+  methods: {
+    readArticle() {
+      this.$store.commit("news/defineArticle", this.article);
+      this.$router.push("/noticia");
+    },
+  },
 });
 </script>
 

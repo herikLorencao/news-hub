@@ -1,5 +1,5 @@
 <template>
-  <footer>Desenvolvido por Herik dos Santos Lorenção © 2021.</footer>
+  <h1>Notícia</h1>
 </template>
 
 <script lang="ts">
@@ -8,6 +8,5 @@ import { defineComponent } from "@vue/runtime-core";
 export default defineComponent({});
 </script>
 
-<style lang="scss">
-@import "footer";
+<style lang="scss" scoped>
 </style>
