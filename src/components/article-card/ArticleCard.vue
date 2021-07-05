@@ -15,6 +15,8 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { useRouter } from "vue-router";
+import { useStore } from "vuex";
 
 export default defineComponent({
   props: {
@@ -23,11 +25,16 @@ export default defineComponent({
       required: true,
     },
   },
-  methods: {
-    readArticle() {
-      this.$store.commit("news/defineArticle", this.article);
-      this.$router.push("/noticia");
-    },
+  setup(props) {
+    const store = useStore();
+    const router = useRouter();
+
+    const readArticle = () => {
+      store.commit("news/defineArticle", props.article);
+      router.push("/noticia");
+    };
+
+    return { readArticle };
   },
 });
 </script>

@@ -3,6 +3,7 @@ import axios, { AxiosInstance } from "axios";
 
 export default class NewsService {
     private client: AxiosInstance;
+    static PAGE_SIZE = 10;
 
     constructor() {
         this.client = axios.create({
@@ -13,10 +14,12 @@ export default class NewsService {
         });
     }
 
-    async getHeadlineNews(): Promise<NewsList> {
+    async getHeadlineNews(page = 1): Promise<NewsList> {
         const resp = await this.client.get("top-headlines", {
             params: {
                 country: "br",
+                pageSize: NewsService.PAGE_SIZE,
+                page,
             },
         });
         return resp.data;

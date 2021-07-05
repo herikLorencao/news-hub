@@ -4,6 +4,7 @@
       class="search-input"
       v-model="searchQuery"
       placeholder="Pesquise por algum tópico ou assunto"
+      suffix-icon="search"
     />
   </div>
 </template>
