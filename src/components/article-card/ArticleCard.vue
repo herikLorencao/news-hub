@@ -8,7 +8,7 @@
       >
     </section>
     <figure>
-      <img :src="article.urlToImage" />
+      <img :src="article.urlToImage" :onerror="notFoundImageSrc" />
     </figure>
   </div>
 </template>
@@ -28,13 +28,15 @@ export default defineComponent({
   setup(props) {
     const store = useStore();
     const router = useRouter();
+    const notFoundImageSrc =
+      "this.src='https://www.publicdomainpictures.net/pictures/280000/nahled/not-found-image-15383864787lu.jpg'";
 
     const readArticle = () => {
       store.commit("news/defineArticle", props.article);
       router.push("/noticia");
     };
 
-    return { readArticle };
+    return { readArticle, notFoundImageSrc };
   },
 });
 </script>
