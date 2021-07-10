@@ -3,8 +3,6 @@
 Projeto para listagem de notícias (vindo da News API) e uso de Vue 3 com Typescript.
 
 ![Página Inicial](docs/home.png)
-![Busca](docs/search.png)
-![Notícia](docs/news.png)
 
 ## Tecnologias usadas
 
