@@ -35,5 +35,6 @@ const emptyArticle = {
 };
 
 const LOADING_STATUS = "loading";
+const OK_STATUS = "ok";
 
-export { NewsList, Article, emptyArticle, LOADING_STATUS };
+export { NewsList, Article, emptyArticle, LOADING_STATUS, OK_STATUS };

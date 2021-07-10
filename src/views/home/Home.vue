@@ -11,6 +11,10 @@
     <div v-show="loading" class="loading-container">
       <it-loading class="loading" color="blue"></it-loading>
     </div>
+    <div v-show="news.articles.length === 0" class="not-found-articles">
+      <it-icon class="icon" color="#333" name="cancel" />
+      <span>Nenhum artigo foi encontrado.</span>
+    </div>
   </section>
 </template>
 
@@ -39,29 +43,41 @@ export default defineComponent({
     const route = useRoute();
 
     const loading = computed(() => news.value.status === LOADING_STATUS);
-    const getHeadlineNews = async () => await newsService.getHeadlineNews();
+
+    const getHeadlineNews = async () =>
+      await newsService.getHeadlineNews(page.value);
+
     const getSearchNews = async (
       query: LocationQueryValue | LocationQueryValue[]
     ) => {
       news.value.status = LOADING_STATUS;
+
+      if (!query) {
+        news.value = await getHeadlineNews();
+        return;
+      }
+
       const queryValue = query ? query.toString() : "";
-      news.value = await newsService.searchNews(queryValue);
+      news.value = await newsService.searchNews(queryValue, page.value);
     };
 
-    onMounted(async () => {
-      news.value.status = LOADING_STATUS;
-      news.value = await getHeadlineNews();
-    });
-
-    watch(page, async (newPage) => {
-      news.value.status = LOADING_STATUS;
-
+    const loadNews = async () => {
       if (route.query?.q) {
         await getSearchNews(route.query?.q);
         return;
       }
 
-      news.value = await newsService.getHeadlineNews(newPage);
+      news.value = await getHeadlineNews();
+    };
+
+    onMounted(async () => {
+      news.value.status = LOADING_STATUS;
+      await loadNews();
+    });
+
+    watch(page, async () => {
+      news.value.status = LOADING_STATUS;
+      await loadNews();
     });
 
     watch(() => route.query.q, getSearchNews);
