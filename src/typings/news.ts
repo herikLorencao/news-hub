@@ -20,4 +20,18 @@ type NewsList = {
     status: string;
 };
 
-export { NewsList, Article };
+const emptyArticle = {
+    author: "",
+    content: "",
+    description: "",
+    publishedAt: "",
+    source: {
+        id: null,
+        name: "",
+    },
+    title: "",
+    url: "",
+    urlToImage: "",
+};
+
+export { NewsList, Article, emptyArticle };
