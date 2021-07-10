@@ -7,9 +7,12 @@
         >Continue lendo</it-button
       >
     </section>
-    <figure>
-      <img :src="article.urlToImage" :onerror="notFoundImageSrc" />
-    </figure>
+    <div class="article-secondary-info">
+      <figure>
+        <img :src="article.urlToImage" :onerror="notFoundImageSrc" />
+      </figure>
+      <span>Publicação: {{ dateFormat(article.publishedAt) }}</span>
+    </div>
   </div>
 </template>
 
@@ -17,6 +20,7 @@
 import { defineComponent } from "vue";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
+import dateFormat from "@/utils/date-formatter";
 
 export default defineComponent({
   props: {
@@ -36,7 +40,7 @@ export default defineComponent({
       router.push("/noticia");
     };
 
-    return { readArticle, notFoundImageSrc };
+    return { readArticle, notFoundImageSrc, dateFormat };
   },
 });
 </script>

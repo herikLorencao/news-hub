@@ -1,6 +1,9 @@
 <template>
   <main>
     <h1>{{ article.title }}</h1>
+    <span v-show="article.publishedAt.length > 0">
+      Publicado em: {{ dateFormat(article.publishedAt) }}
+    </span>
     <h2>{{ article.description }}</h2>
     <img :src="article.urlToImage" />
     <it-button @click="openArticle" type="primary" class="open-article-btn"
@@ -11,9 +14,10 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, ref } from "@vue/runtime-core";
+import router from "@/router";
 import { useStore } from "vuex";
 import { emptyArticle } from "@/typings/news";
-import router from "@/router";
+import dateFormat from "@/utils/date-formatter";
 
 export default defineComponent({
   setup() {
@@ -25,7 +29,7 @@ export default defineComponent({
       if (!articleContent) router.back();
       article.value = articleContent;
     });
-    return { article };
+    return { article, dateFormat };
   },
   methods: {
     openArticle() {

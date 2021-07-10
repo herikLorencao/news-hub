@@ -58,6 +58,7 @@ export default defineComponent({
 
       if (route.query?.q) {
         await getSearchNews(route.query?.q);
+        return;
       }
 
       news.value = await newsService.getHeadlineNews(newPage);
