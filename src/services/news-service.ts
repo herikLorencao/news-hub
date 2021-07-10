@@ -24,4 +24,14 @@ export default class NewsService {
         });
         return resp.data;
     }
+
+    async searchNews(queryParam: string, page = 1): Promise<NewsList> {
+        const resp = await this.client.get("everything", {
+            params: {
+                q: queryParam,
+                page,
+            },
+        });
+        return resp.data;
+    }
 }

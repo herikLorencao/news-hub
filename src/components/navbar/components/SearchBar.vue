@@ -3,8 +3,9 @@
     <it-input
       class="search-input"
       v-model="searchQuery"
-      placeholder="Pesquise por algum tópico ou assunto"
+      placeholder="Pesquise por algum tópico ou assunto (Tecle Enter para confirmar)"
       suffix-icon="search"
+      @keypress.enter="search"
     />
   </div>
 </template>
@@ -13,9 +14,15 @@
 import { defineComponent, ref } from "vue";
 
 export default defineComponent({
+  emits: ["search"],
   setup() {
     const searchQuery = ref("");
     return { searchQuery };
+  },
+  methods: {
+    search() {
+      this.$router.push(`/?q=${this.searchQuery}`);
+    },
   },
 });
 </script>

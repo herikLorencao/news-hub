@@ -34,4 +34,6 @@ const emptyArticle = {
     urlToImage: "",
 };
 
-export { NewsList, Article, emptyArticle };
+const LOADING_STATUS = "loading";
+
+export { NewsList, Article, emptyArticle, LOADING_STATUS };
